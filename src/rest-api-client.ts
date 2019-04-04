@@ -20,7 +20,7 @@ export class RestApiClient {
     const limit = 100;
     const _trades: TradeResponse[] = [];
     while (true) {
-      const { trades, count } = await this.getTradeHistoryPerMaxCount(since, end, limit);
+      const { trades, count } = await this.getTradeHistoryPerLimitCount(since, end, limit);
       trades.forEach(trade => _trades.push(trade));
       if (count < limit) {
         break;
@@ -31,7 +31,7 @@ export class RestApiClient {
     return _trades;
   }
 
-  private async getTradeHistoryPerMaxCount(
+  private async getTradeHistoryPerLimitCount(
     since: number,
     end: number,
     limit: number,
