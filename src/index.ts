@@ -1,7 +1,7 @@
 import './env';
 import * as assert from 'assert';
 import { RestApiClient } from './rest-api-client';
-import { writeFile } from './file-writer';
+import { writeFile, readFile } from './file';
 
 const [_, __, date = ''] = process.argv;
 const { BITBANK_API_KEY = '', BITBANK_SECRET_KEY = '' } = process.env;
@@ -11,8 +11,8 @@ assert(!!BITBANK_API_KEY, 'API KEY shoud be exists.');
 assert(!!BITBANK_SECRET_KEY, 'SECRET KEY shoud be exists.');
 
 const rac = new RestApiClient(BITBANK_API_KEY, BITBANK_SECRET_KEY);
+const existsTrades = readFile(date);
 
-rac.getTradeHistory(date).then(trades => {
-  console.log({ trades, count: trades.length });
+rac.getTradeHistory(date, existsTrades).then(trades => {
   writeFile(date, trades);
 });
