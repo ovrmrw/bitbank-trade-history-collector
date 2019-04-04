@@ -1,0 +1,59 @@
+{
+  "name": "bitbank-trade-history-collector",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf build",
+    "tsc": "tsc --build tsconfig.build.json",
+    "tsc:w": "tsc --build tsconfig.build.json --watch",
+    "build": "npm run clean && npm run tsc",
+    "build:w": "npm run clean && npm run tsc:w",
+    "start": "npm run ts -- src/index.ts",
+    "watch": "npm run nd -- src/index.ts",
+    "ts": "ts-node",
+    "nd": "nodemon --exec ts-node",
+    "bs": "npm run build && node",
+    "test": "jest",
+    "test:w": "jest --watch"
+  },
+  "engines": {
+    "node": ">= 10",
+    "npm": ">= 6.4"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "testEnvironment": "node"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.1",
+    "@types/lodash": "^4.14.77",
+    "@types/node": "^8.0.33",
+    "jest": "24.7.1",
+    "nodemon": "1.18.10",
+    "prettier": "1.16.4",
+    "ts-jest": "24.0.1",
+    "ts-node": "8.0.3",
+    "tslint": "5.14.0",
+    "tslint-config-prettier": "^1.8.0",
+    "typescript": "3.4.1"
+  },
+  "dependencies": {
+    "lodash": "4.17.11",
+    "node-bitbankcc": "2.0.1"
+  }
+}
