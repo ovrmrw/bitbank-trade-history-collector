@@ -29,6 +29,7 @@ export class RestApiClient {
         break;
       } else {
         since = trades[trades.length - 1].executed_at + 1;
+        if (since > end) break;
       }
     }
     return _trades;
